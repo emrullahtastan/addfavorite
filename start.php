@@ -18,6 +18,10 @@ function example_function()
             return $custom_content;
         }
 
+        include 'inc/page/example-ajax-enqueue.php';
+        include 'inc/page/simple-ajax-example.php';
+
+
         add_filter('the_content', 'include_add_button');
 
         wp_enqueue_style('favorite_style', '/wp-content/plugins/plugin-emrullah/inc/css/favorite.css');
