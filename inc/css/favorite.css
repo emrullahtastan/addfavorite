@@ -1,3 +1,75 @@
-.add_favorite{
+#add_favorite_button{
     margin-bottom:20px;
+}
+
+#favorite_input:focus{
+    outline: none;
+}
+#favorite_input{
+    width: 100%;
+    background-color: transparent;
+    color:white;
+    border:none;
+    outline: none;
+    padding:5px 0;
+}
+
+.favorite_label_row{
+    font-size: 13px;
+    width: 99%;
+}
+
+.favorite_label_row > label{
+    width: 103%;
+    padding: 5px 5px 5px 10px;
+}
+
+.favorite_label_row:hover,
+.selected_favorite_label
+{
+    background-color: #5a676f;
+}
+
+#favorite_card{
+    position: absolute;
+    z-index: 1;
+    display: none;
+}
+
+#favorite_card > .card-body{
+    padding:0 0 15px 0;
+    max-height: 200px;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#favorite_label_create_message{
+    border-top: 1px solid rgba(0,0,0,.125);
+    padding:5px 12px;
+    font-size:13px;
+    display: none;
+}
+#favorite_label_create_message > .fa{
+    color:#5a676f;
+}
+
+/* width */
+#favorite_card > .card-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#favorite_card > .card-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+#favorite_card > .card-body::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+#favorite_card > .card-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
