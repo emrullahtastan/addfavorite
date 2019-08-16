@@ -19,7 +19,7 @@ $(document).ready(function () {
             let favorite_label_count = $(".favorite_label_row").length;
             $("#favorite_card").keydown(function (event) {
                 let keys = [38, 40];
-                if ($.inArray(event.keyCode, keys)>-1) {
+                if ($.inArray(event.keyCode, keys) > -1) {
                     $(".selected_favorite_label").removeClass("selected_favorite_label");
                     switch (event.keyCode) {
                         case 38: // yukarı
@@ -42,15 +42,19 @@ $(document).ready(function () {
     });
     $("#favorite_input").keyup(function (event) {
         let text = $(this).val();
-        $(".favorite_label_row").hide().each(function (i, val) {
-            let favorite_label = $(val).data("favorite_label");
-            if (favorite_label.includes(text))
-                $(val).show();
-        });
-        let count = $(".favorite_label_row:visible").length;
-        $("#favorite_label_create_message").hide().find("label").empty();
-        if (count == 0) {
-            $("#favorite_label_create_message").show().find("label").html("Create <b>" + text + "</b>");
+        if (text.length > 0) {
+            $(".favorite_label_row").hide().each(function (i, val) {
+                let favorite_label = $(val).data("favorite_label");
+                if (favorite_label.includes(text))
+                    $(val).show();
+            });
+            let count = $(".favorite_label_row:visible").length;
+            if (count == 0) {
+                $("#favorite_label_create_message").show().find("label").html("Create <b>" + text + "</b>");
+            }
         }
+        else
+            $("#favorite_label_create_message").hide().find("label").empty();
+
     });
 });

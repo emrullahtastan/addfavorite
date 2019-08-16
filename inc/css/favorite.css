@@ -73,3 +73,7 @@
 #favorite_card > .card-body::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+#favorite_label_row_example {
+    display:none;
+}
