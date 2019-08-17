@@ -5,28 +5,16 @@
         Favorite List
         <input id="favorite_input" placeholder="Enter label">
     </div>
+    <div id="favorite_label_row_example" data-favorite_label="example" data-process_type="select">
+        <label>
+            <input class="label_checkbox" type="checkbox">
+            <span class="label_name">One Label</span>
+        </label>
+    </div>
     <div id="favorite_card_body" class="card-body">
-        <div class="favorite_label_row" data-favorite_label="birinci etiket">
-            <label>
-                <input type="checkbox">
-                Birinci etiket
-            </label>
-        </div>
-        <div class="favorite_label_row" data-favorite_label="ikinci etiket">
-            <label>
-                <input type="checkbox">
-                İkinci etiket
-            </label>
-        </div>
-        <div class="favorite_label_row" data-favorite_label="üçüncü etiket">
-            <label>
-                <input type="checkbox">
-                Üçüncü etiket
-            </label>
-        </div>
 
-        <div id="favorite_label_create_message">
-            <i class="fa fa-plus"></i> <label></label>
-        </div>
+    </div>
+    <div id="favorite_label_create_message" data-process_type="create">
+        <i class="fa fa-plus"></i> <label></label>
     </div>
 </div>

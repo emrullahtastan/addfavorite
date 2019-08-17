@@ -1,14 +1,13 @@
-function get_ajax() {
+function select_label_for_user(label_id) {
+    if (!$.isNumeric(label_id))
+        return false;
     jQuery.ajax({
         type: "post",
         dataType: "json",
         url: "/wp-admin/admin-ajax.php",
-        data: {action: "add_favorite_action_ajax"},
+        data: {action: "select_label_for_user", label_id: label_id},
         success: function (response) {
             console.log(response);
         }
     });
 }
-setTimeout(function () {
-    get_ajax();
-},1024);

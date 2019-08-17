@@ -17,3 +17,7 @@ function init_ajax_function()
 {
     include 'inc/page/ajax.php';
 }
+
+if ( ! defined( 'ADD_FAVORITE_PLUGIN_PATH' ) ) {
+    define( 'ADD_FAVORITE_PLUGIN_PATH', ABSPATH . 'wp-content/plugins/plugin-emrullah/' );
+}
