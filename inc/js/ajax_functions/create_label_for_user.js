@@ -1,5 +1,5 @@
-function create_label_for_user(label, selected) {
-    if ($.isEmptyObject(label) || $.isEmptyObject(selected))
+function create_label_for_user(label) {
+    if ($.isEmptyObject(label))
         return false;
     jQuery.ajax({
         type: "post",

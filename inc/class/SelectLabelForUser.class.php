@@ -18,9 +18,9 @@ class SelectLabelForUser
         if (!is_numeric($this->post_id) || !is_numeric($this->label_id) || empty($this->selected))
             return false;
 
-        if ($this->selected) {
+        if ($this->selected=="true") {
             $result = add_post_meta($this->post_id, $this->post_meta_key, $this->label_id);
-        } else {
+        } else if ($this->selected=="false") {
             $result = $this->unselect_label();
         }
         return $result;

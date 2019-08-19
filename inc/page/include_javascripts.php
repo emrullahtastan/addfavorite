@@ -8,3 +8,4 @@ wp_enqueue_script('favorite_script', '/wp-content/plugins/plugin-emrullah/inc/js
 wp_enqueue_script('get_labels_for_user_script', '/wp-content/plugins/plugin-emrullah/inc/js/ajax_functions/get_labels_for_user.js');
 wp_enqueue_script('create_label_for_user_script', '/wp-content/plugins/plugin-emrullah/inc/js/ajax_functions/create_label_for_user.js');
 wp_enqueue_script('select_label_for_user_script', '/wp-content/plugins/plugin-emrullah/inc/js/ajax_functions/select_label_for_user.js');
+wp_enqueue_script('select_favorite_label_script', '/wp-content/plugins/plugin-emrullah/inc/js/select_favorite_label.js');

@@ -9,13 +9,20 @@ function get_labels_for_user() {
                 $("#favorite_card_body").empty();
                 $(".selected_favorite_label").removeClass("selected_favorite_label");
                 $("#favorite_input").empty();
-                let label_row_clone = $("#favorite_label_row_example").clone().removeAttr("id").show().addClass("favorite_label_row");
+                let label_row_clone = $("#favorite_label_row_example").clone().removeAttr("id")
+                    .show()
+                    .addClass("favorite_label_row");
                 $.each(response, function (i, val) {
                     let label_row=label_row_clone.clone();
-                    label_row.find(".label_checkbox").prop("checked", true);
+                    label_row.attr("data-label_id",val['label_id']);
+                    let checkbox_value=false;
+                    if (val['value'])
+                        checkbox_value=true;
+                    label_row.find(".label_checkbox").prop("checked", checkbox_value);
                     label_row.find(".label_name").html(val['label']);
                     $("#favorite_card_body").append(label_row);
                 });
+                $.getScript("/wp-content/plugins/plugin-emrullah/inc/js/select_favorite_label.js");
             }
         }
     });
