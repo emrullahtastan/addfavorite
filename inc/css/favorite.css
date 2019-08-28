@@ -49,6 +49,10 @@
     padding:5px 12px;
     font-size:13px;
     display: none;
+    cursor:pointer;
+}
+#favorite_label_create_message > label{
+    cursor:pointer;
 }
 #favorite_label_create_message > .fa{
     color:#5a676f;

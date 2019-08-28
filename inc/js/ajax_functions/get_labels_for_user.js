@@ -15,6 +15,7 @@ function get_labels_for_user() {
                 $.each(response, function (i, val) {
                     let label_row=label_row_clone.clone();
                     label_row.attr("data-label_id",val['label_id']);
+                    label_row.attr("data-favorite_label",val['label']);
                     let checkbox_value=false;
                     if (val['value'])
                         checkbox_value=true;

@@ -1,5 +1,5 @@
 function select_label_for_user(label_id, value) {
-    if (!$.isNumeric(label_id) || value.length==0)
+    if (typeof value == "undefined")
         return false;
     jQuery.ajax({
         type: "post",
@@ -8,6 +8,9 @@ function select_label_for_user(label_id, value) {
         data: {action: "select_label_for_user", label_id: label_id, value: value},
         success: function (response) {
             console.log(response);
+            //todo: AF-6  root
+            // Text kutusundayken seçim yapılınca işlemin yapılması.
+            // Daha önce var olan bir etiket arama kutusunda bulursa ve seçili değilse veya seçiliyse; veritabanından işlemi başarılı olursa ona göre işlem yapılır.
         }
     });
 }

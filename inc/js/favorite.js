@@ -19,7 +19,7 @@ $(document).ready(function () {
                 });
             }, 100);
             $("#favorite_card").keydown(function (event) {
-                let selected_favorite_label_id = $(".selected_favorite_label").length-1;
+                let selected_favorite_label_id = $(".selected_favorite_label").length - 1;
                 let favorite_label_count = $(".favorite_label_row").length;
                 let keys = [38, 40];
                 if ($.inArray(event.keyCode, keys) > -1) {
@@ -47,14 +47,23 @@ $(document).ready(function () {
 
         let text = $(this).val();
         if (text.length > 0) {
+            let equal_label = false;
             $(".favorite_label_row").hide().each(function (i, val) {
                 let favorite_label = $(val).data("favorite_label");
                 if (favorite_label.includes(text))
                     $(val).show();
+
+                if (favorite_label === text)
+                    equal_label = true;
             });
+
             let count = $(".favorite_label_row:visible").length;
-            if (count === 0) {
-                $("#favorite_label_create_message").show().find("label").html("Create <b>" + text + "</b>");
+            if (!equal_label) {
+                setTimeout(function () {
+                    $("#favorite_label_create_message").show().find("label").html("Create <b>" + $("#favorite_input").val() + "</b>");
+                }, 100)
+            } else {
+                $("#favorite_label_create_message").hide().find("label").empty();
             }
 
             //====================================
@@ -73,6 +82,7 @@ $(document).ready(function () {
                     let selected_item = $(element).css("visibility");
                     if (!$.isEmptyObject(selected_item) || selected_item == "visible") {
                         let element_type = $(element).data("process_type");
+                        console.log(element_type);
                         switch (element_type) {
                             case "create":
                                 //İlk defa bir etiket oluşturulmak istendiğinde
@@ -84,6 +94,19 @@ $(document).ready(function () {
                                 select_label_for_user(label_id);
                                 break;
                         }
+                    } else {
+                        //text kutusundayken enter düğmesine basılırsa
+                        let label_selected = false;
+                        if (equal_label) {
+                            //eğer label liste bulunan bir label'a ait bir name girildiyse
+                            let equal_element = $(".favorite_label_row[data-favorite_label='" + text + "']");
+                            label_selected = !$(equal_element).find(".label_checkbox").prop("checked");
+                            let label_id = parseInt($(equal_element).data("label_id"));
+                            select_label_for_user(label_id, label_selected);
+                        } else {
+                            //eğer label liste bulunmayan bir label name yazılıp, enter tuşuna basılırsa
+                            create_label_for_user(text);
+                        }
                     }
                     break;
             }
@@ -91,6 +114,7 @@ $(document).ready(function () {
         } else {
             $(".selected_favorite_label").removeClass("selected_favorite_label");
             $("#favorite_label_create_message").hide().find("label").empty();
+            $(".favorite_label_row").show();
         }
     });
 
