@@ -2,12 +2,12 @@ $(document).ready(function () {
     let favorite_card_display = "none";
     $("#add_favorite_button").click(function () {
         let top = $(this).position().top + 33;
-        $("#favorite_card").css({'top': top}).toggle();
+        $("#favorite_card").css({'top': top}).toggle(1,function (x) {
+            $("#favorite_input").val("");
+        });
         favorite_card_display = $("#favorite_card").css('display');
         if (favorite_card_display == "block") {
-
             get_labels_for_user();
-
             $("#favorite_input").focus();
             setTimeout(function () {
                 $("#favorite_card").click(function (event) {
