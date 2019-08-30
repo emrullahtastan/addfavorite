@@ -4,6 +4,7 @@ $(document).ready(function () {
         let top = $(this).position().top + 33;
         $("#favorite_card").css({'top': top}).toggle(1,function (x) {
             $("#favorite_input").val("");
+            $("#favorite_label_create_message").hide().find("label").empty();
         });
         favorite_card_display = $("#favorite_card").css('display');
         if (favorite_card_display == "block") {
