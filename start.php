@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Plugin-Emrullah
+Plugin Name: Add Favorite
 */
 add_action('wp', 'example_function');
 add_action('init', 'init_ajax_function');
