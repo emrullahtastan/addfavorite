@@ -18,34 +18,35 @@ $(document).ready(function () {
                     $("body").unbind("click");
                 });
             }, 100);
-            $("#favorite_card").keydown(function (event) {
-                let selected_favorite_label_id = $(".selected_favorite_label").index();
-                let favorite_label_count = $(".favorite_label_row").length;
-                let keys = [38, 40];
-                if ($.inArray(event.keyCode, keys) > -1) {
-                    $(".selected_favorite_label").removeClass("selected_favorite_label");
-                    switch (event.keyCode) {
-                        case 38: // yukarı
-                            selected_favorite_label_id--;
-                            break;
-                        case 40: // aşağı
-                            selected_favorite_label_id++;
-                            break;
-                    }
-                    if (selected_favorite_label_id>favorite_label_count-1)
-                        selected_favorite_label_id=favorite_label_count-1;
-                    else if (selected_favorite_label_id<=0)
-                        selected_favorite_label_id=0
-
-                    $(".favorite_label_row").eq(selected_favorite_label_id).addClass("selected_favorite_label");
-                    $(".favorite_label_row").eq(selected_favorite_label_id).find("input").focus();
-                    event.preventDefault();
-                }
-            });
         }
     });
-    $("#favorite_input").keyup(function (event) {
+    $("#favorite_card").keydown(function (event) {
+        let selected_favorite_label_id = $(".selected_favorite_label").index();
+        console.log(selected_favorite_label_id);
+        let favorite_label_count = $(".favorite_label_row").length;
+        let keys = [38, 40];
+        if ($.inArray(event.keyCode, keys) > -1) {
+            $(".selected_favorite_label").removeClass("selected_favorite_label");
+            switch (event.keyCode) {
+                case 38: // yukarı
+                    selected_favorite_label_id--;
+                    break;
+                case 40: // aşağı
+                    selected_favorite_label_id++;
+                    break;
+            }
+            if (selected_favorite_label_id>favorite_label_count-1)
+                selected_favorite_label_id=favorite_label_count-1;
+            else if (selected_favorite_label_id<=0)
+                selected_favorite_label_id=0;
 
+            $(".favorite_label_row").eq(selected_favorite_label_id).addClass("selected_favorite_label");
+            $(".favorite_label_row").eq(selected_favorite_label_id).find("input").focus();
+            event.preventDefault();
+        }
+    });
+
+    $("#favorite_input").keyup(function (event) {
         let text = $(this).val();
         if (text.length > 0) {
             let equal_label = false;
