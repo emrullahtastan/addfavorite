@@ -22,10 +22,11 @@ $(document).ready(function () {
     });
     $("#favorite_card").keydown(function (event) {
         let selected_favorite_label_id = $(".selected_favorite_label").index();
-        console.log(selected_favorite_label_id);
-        let favorite_label_count = $(".favorite_label_row").length;
+        let favorite_label_count = $(".favorite_label_row:visible").length;
         let keys = [38, 40];
         if ($.inArray(event.keyCode, keys) > -1) {
+            let create_label = $("#favorite_label_create_message").css('display') != "none" ? true : false;
+            let create_label_is_selected=$("#favorite_label_create_message").hasClass("selected_favorite_label");
             $(".selected_favorite_label").removeClass("selected_favorite_label");
             switch (event.keyCode) {
                 case 38: // yukarı
@@ -35,13 +36,21 @@ $(document).ready(function () {
                     selected_favorite_label_id++;
                     break;
             }
-            if (selected_favorite_label_id>favorite_label_count-1)
-                selected_favorite_label_id=favorite_label_count-1;
-            else if (selected_favorite_label_id<=0)
-                selected_favorite_label_id=0;
+            if (selected_favorite_label_id > favorite_label_count - 1) {
+                if (!create_label)
+                    selected_favorite_label_id = favorite_label_count - 1;
+                else if (create_label_is_selected && event.keyCode==38) {
+                    selected_favorite_label_id=$(".favorite_label_row:visible:last").index();
+                }
+            } else if (selected_favorite_label_id <= 0)
+                selected_favorite_label_id = 0;
 
-            $(".favorite_label_row").eq(selected_favorite_label_id).addClass("selected_favorite_label");
-            $(".favorite_label_row").eq(selected_favorite_label_id).find("input").focus();
+            if (selected_favorite_label_id < favorite_label_count) {
+                $(".favorite_label_row:visible").eq(selected_favorite_label_id).addClass("selected_favorite_label");
+                $(".favorite_label_row:visible").eq(selected_favorite_label_id).find("input").focus();
+            } else {
+                $("#favorite_label_create_message").addClass("selected_favorite_label");
+            }
             event.preventDefault();
         }
     });
