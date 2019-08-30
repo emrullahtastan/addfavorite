@@ -19,7 +19,7 @@ $(document).ready(function () {
                 });
             }, 100);
             $("#favorite_card").keydown(function (event) {
-                let selected_favorite_label_id = $(".selected_favorite_label").length - 1;
+                let selected_favorite_label_id = $(".selected_favorite_label").index();
                 let favorite_label_count = $(".favorite_label_row").length;
                 let keys = [38, 40];
                 if ($.inArray(event.keyCode, keys) > -1) {
@@ -32,10 +32,11 @@ $(document).ready(function () {
                             selected_favorite_label_id++;
                             break;
                     }
-                    if (selected_favorite_label_id > favorite_label_count - 1)
-                        selected_favorite_label_id = favorite_label_count - 1;
-                    else if (selected_favorite_label_id <= 0)
-                        selected_favorite_label_id = 0;
+                    if (selected_favorite_label_id>favorite_label_count-1)
+                        selected_favorite_label_id=favorite_label_count-1;
+                    else if (selected_favorite_label_id<=0)
+                        selected_favorite_label_id=0
+
                     $(".favorite_label_row").eq(selected_favorite_label_id).addClass("selected_favorite_label");
                     $(".favorite_label_row").eq(selected_favorite_label_id).find("input").focus();
                     event.preventDefault();
