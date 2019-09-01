@@ -23,7 +23,7 @@ function get_labels_for_user() {
                     label_row.find(".label_name").html(val['label']);
                     $("#favorite_card_body").append(label_row);
                 });
-                $.getScript("/wp-content/plugins/plugin-emrullah/inc/js/select_favorite_label.js");
+                $.getScript("/wp-content/plugins/add-favorite/inc/js/select_favorite_label.js");
             }
         }
     });

@@ -56,12 +56,15 @@ $(document).ready(function () {
         }
     });
 
+
     $("#favorite_input").keyup(function (event) {
         let text = $(this).val();
+
         if (text.length > 0) {
             let equal_label = false;
             $(".favorite_label_row").hide().each(function (i, val) {
-                let favorite_label = $(val).data("favorite_label");
+
+                let favorite_label = $(val).data("favorite_label").toString();
                 if (favorite_label.includes(text))
                     $(val).show();
 

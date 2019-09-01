@@ -19,5 +19,5 @@ function init_ajax_function()
 }
 
 if ( ! defined( 'ADD_FAVORITE_PLUGIN_PATH' ) ) {
-    define( 'ADD_FAVORITE_PLUGIN_PATH', ABSPATH . 'wp-content/plugins/plugin-emrullah/' );
+    define( 'ADD_FAVORITE_PLUGIN_PATH', ABSPATH . 'wp-content/plugins/add-favorite/' );
 }
